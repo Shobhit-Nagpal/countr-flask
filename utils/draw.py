@@ -32,7 +32,7 @@ def draw_video_detections(video_results, video_file_path):
     frame_height = int(cap.get(4))
     fps = int(cap.get(cv2.CAP_PROP_FPS))
 
-    predicted_video_path = "api/predictions/videos/" + get_unique_id() + extension
+    predicted_video_path = "/api/predictions/videos/" + get_unique_id() + extension
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     out = cv2.VideoWriter(predicted_video_path, fourcc, fps, (frame_width, frame_height))
 
