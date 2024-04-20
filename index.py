@@ -48,12 +48,15 @@ def count_image():
         prediction_result = model.predict(
             tmp_file_path, confidence=40, overlap=30)
 
+        predicted_result_json = prediction_result.json()
+        dimensions = predicted_result_json["image"]
         prediction_image = draw_image_detections(prediction_result, tmp_file_path)
 
         os.remove(tmp_file_path)
 
         return jsonify({
             "type": "image",
+            "dimensions": dimensions,
             "src": prediction_image,
             "totalCount": len(prediction_result)
         }), 200
